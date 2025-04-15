@@ -71,7 +71,7 @@ print('mae:',mae)
 
 # Plot actual prices
 plt.scatter(range(len(y_test)), y_test, color='green', label='Actual Prices', alpha=0.6)
-
+# Plot the first actual/predicted price at position 0, the second at 1, and so on
 # Plot predicted prices
 plt.scatter(range(len(y_pred)), y_pred, color='blue', label='Predicted Prices', alpha=0.6)
 
