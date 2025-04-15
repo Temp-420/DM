@@ -46,10 +46,10 @@ df['Day of Week'] = df['Start Time'].dt.dayofweek
 df.drop(columns=['Start Time', 'End Time'], inplace=True)
 
 # Encode categorical variables
-label_enc = LabelEncoder()
-df['Start Station'] = label_enc.fit_transform(df['Start Station'])
-df['End Station'] = label_enc.fit_transform(df['End Station'])
-df['User Type'] = label_enc.fit_transform(df['User Type'])  # Target variable
+le = LabelEncoder()
+df['Start Station'] = le.fit_transform(df['Start Station'])
+df['End Station'] = le.fit_transform(df['End Station'])
+df['User Type'] = le.fit_transform(df['User Type'])  # Target variable
 
 # Splitting dataset
 X = df.drop(columns=['User Type'])
@@ -57,11 +57,11 @@ y = df['User Type']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Train Decision Tree model
-dt_model = DecisionTreeClassifier(max_depth=5, random_state=42)
-dt_model.fit(X_train, y_train)
+dt = DecisionTreeClassifier(max_depth=5, random_state=42)
+dt.fit(X_train, y_train)
 
 # Predictions
-y_pred = dt_model.predict(X_test)
+y_pred = dt.predict(X_test)
 
 # Evaluation
 print("\nModel Performance:")
